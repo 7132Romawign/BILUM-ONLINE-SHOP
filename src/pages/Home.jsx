@@ -32,7 +32,7 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-4 py-16 flex flex-col md:flex-row gap-12 items-center">
         <div className="w-full md:w-1/2 h-96 bg-gray-200 rounded-lg overflow-hidden">
           <img
-            src="https://share.gemini.google/D2Zo0EkCzDd4"
+            src="blob:https://gemini.google.com/0f2e8647-7cb9-46c4-92fd-a39fefdf45b2"
             alt="PNG Bilums and Crafts"
             className="w-full h-full object-cover"
           />
