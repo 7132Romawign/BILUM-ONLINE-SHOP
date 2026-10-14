@@ -8,12 +8,12 @@ export default function Home() {
     'Handcrafted Meri Blouses',
     'Supporting Local PNG Artisans',
     'Fast & Reliable Island-Wide Delivery',
-    'Secure & Convenient Payments'
+    'Secure & Convenient Payments',
   ];
 
   return (
     <div>
-      {/* Hero */}
+      {/* Hero Section */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-700 text-white py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -22,23 +22,27 @@ export default function Home() {
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
             From vibrant handwoven Bilums to beautifully tailored Meri Blouses — every item carries the heart, heritage, and pride of Papua New Guinea.
           </p>
-          <Link to="/shop" className="bg-png-red hover:bg-red-700 text-white px-8 py-3 rounded font-semibold transition">
+          <Link
+            to="/shop"
+            className="bg-png-red hover:bg-red-700 text-white px-8 py-3 rounded font-semibold transition inline-block"
+          >
             Shop Now
           </Link>
         </div>
       </div>
 
-      {/* About Us */}
+      {/* About Us Section */}
       <div className="max-w-6xl mx-auto px-4 py-16 flex flex-col md:flex-row gap-12 items-center">
-        <div className="w-full md:w-1/2 h-96 bg-gray-200 rounded-lg overflow-hidden"
-            <img
-               src="/Bilum_logo.png"
-               alt="Bilum Shop Logo"
-               className="w-full h-full object-cover"
-              
-            />
-          
+        {/* Left: Logo Image */}
+        <div className="w-full md:w-1/2 h-96 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
+          <img
+            src="/Bilum_logo.png"
+            alt="Bilum Shop Logo"
+            className="w-full h-full object-cover"
+          />
         </div>
+
+        {/* Right: About Text */}
         <div className="w-full md:w-1/2 space-y-6">
           <h2 className="text-3xl font-bold text-gray-900">About Us</h2>
           <p className="text-gray-600 leading-relaxed">
@@ -47,6 +51,7 @@ export default function Home() {
           <p className="text-gray-600 leading-relaxed">
             Our mission is to bring authentic, locally made treasures to customers everywhere while supporting the artisans and communities who create them.
           </p>
+
           <h3 className="text-xl font-bold text-gray-900 mt-6">Why Choose Us?</h3>
           <ul className="space-y-3">
             {features.map((item, i) => (
