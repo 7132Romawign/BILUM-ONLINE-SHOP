@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 export default function Checkout() {
   const navigate = useNavigate();
+  const { cartTotal, clearCart, cartItems } = useCart();
+  
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -16,16 +19,26 @@ export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState('Cash on Delivery');
   const [placing, setPlacing] = useState(false);
 
-  // Demo totals — replace with real cart data later
-  const subtotal = 235.0;
-  const shipping = 20.0;
+  // Dynamic calculations based on the real cart
+  const subtotal = cartTotal;
+  // Free shipping for orders over K500, otherwise K20
+  const shipping = subtotal > 500 || subtotal === 0 ? 0 : 20.00; 
   const total = subtotal + shipping;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (cartItems.length === 0) {
+      alert("Your cart is empty. Please add items before checking out.");
+      return;
+    }
+
     setPlacing(true);
+    
+    // Simulate order processing (We will connect this to Supabase later)
     setTimeout(() => {
-      alert('Order placed successfully! (Demo mode — connect to Supabase to enable real orders)');
+      alert(`Order placed successfully!\n\nTotal: K${total.toFixed(2)}\nPayment: ${paymentMethod}\n\n(Demo mode)`);
+      clearCart(); // Empty the cart after successful order
       setPlacing(false);
       navigate('/');
     }, 1500);
@@ -154,10 +167,10 @@ export default function Checkout() {
 
             <button
               type="submit"
-              disabled={placing}
+              disabled={placing || cartItems.length === 0}
               className="w-full bg-png-red text-white py-3 mt-8 rounded font-semibold hover:bg-red-700 transition disabled:opacity-50"
             >
-              {placing ? 'Placing Order...' : 'Place Order'}
+              {placing ? 'Processing...' : 'Place Order'}
             </button>
           </div>
         </div>
